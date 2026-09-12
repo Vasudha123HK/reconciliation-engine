@@ -1,0 +1,11 @@
+location_id,location_name,org_id,org_name,address,city,state
+LOC-001,Downtown HQ,ORG-001,Acme Corp,100 Main Street,New York,NY
+LOC-002,Westside Branch,ORG-001,Acme Corp,250 West Ave,Los Angeles,CA
+LOC-003,Airport Terminal,ORG-001,Acme Corp,1 Airport Blvd,Chicago,IL
+LOC-004,Harbor Office,ORG-002,Globex Inc,50 Harbor Dr,San Francisco,CA
+LOC-005,Mountain View Lab,ORG-002,Globex Inc,800 Research Pkwy,Denver,CO
+LOC-006,Seaside Resort,ORG-002,Globex Inc,12 Ocean Blvd,Miami,FL
+LOC-007,Central Depot,ORG-003,Initech LLC,300 Central Ave,Dallas,TX
+LOC-008,Northgate Plaza,ORG-003,Initech LLC,45 Northgate Rd,Seattle,WA
+LOC-009,Riverside Mall,ORG-003,Initech LLC,789 River St,Portland,OR
+LOC-010,Lakefront Tower,ORG-003,Initech LLC,500 Lake Shore Dr,Minneapolis,MN
