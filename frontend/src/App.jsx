@@ -3,6 +3,8 @@ import FilterBar from './components/FilterBar';
 import StatsCards from './components/StatsCards';
 import DiscrepancyTable from './components/DiscrepancyTable';
 
+const API_BASE_URL = 'https://reconciliation-engine-3.onrender.com';
+
 export default function App() {
   const [organizations, setOrganizations] = useState([]);
   const [selectedOrg, setSelectedOrg] = useState('');
@@ -13,9 +15,8 @@ export default function App() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // Load organizations list on mount
   useEffect(() => {
-    fetch('/api/organizations/')
+    fetch(`${API_BASE_URL}/api/organizations/`)
       .then((res) => {
         if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
         return res.json();
@@ -34,7 +35,6 @@ export default function App() {
       });
   }, []);
 
-  // Fetch stats & discrepancies when tenant, reason, or sort changes
   const fetchData = useCallback(() => {
     if (!selectedOrg) return;
 
@@ -42,8 +42,12 @@ export default function App() {
     setError(null);
 
     const sortParam = sortAsc ? 'asc' : 'desc';
-    const discUrl = `/api/discrepancies/?org_id=${selectedOrg}&reason=${selectedReason}&sort=${sortParam}`;
-    const statsUrl = `/api/stats/?org_id=${selectedOrg}`;
+
+    const discUrl =
+      `${API_BASE_URL}/api/discrepancies/?org_id=${selectedOrg}&reason=${selectedReason}&sort=${sortParam}`;
+
+    const statsUrl =
+      `${API_BASE_URL}/api/stats/?org_id=${selectedOrg}`;
 
     Promise.all([
       fetch(discUrl).then((r) => r.json()),
@@ -60,6 +64,8 @@ export default function App() {
         setLoading(false);
       });
   }, [selectedOrg, selectedReason, sortAsc]);
+
+  // rest of your code...
 
   useEffect(() => {
     fetchData();
