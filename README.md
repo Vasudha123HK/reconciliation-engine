@@ -125,18 +125,80 @@ python manage.py test reconciler
 - Server-side pagination (unnecessary for 120-row dataset).
 - Custom WebSocket live updates (overkill for static CSV audit runs).
 
+
 ---
+# Reconciliation Engine
 
-## 5. Mandatory Evaluation Questions
+A web-based **Reconciliation Engine** built with Django and REST APIs to identify and manage discrepancies between organizational records.
 
-### Question 1: What is one thing the AI agent got wrong, and how did you detect it?
-**Answer:** The initial draft of reference mapping relied on naive string comparison (`a["record_id"] == b["record_ref"]`). During testing with System B data containing values like `" REC-003 "` and `"rec_005"`, the engine incorrectly flagged them as `MISSING_IN_SYSTEM_B` and `ORPHAN_IN_SYSTEM_B`. I detected this by inspecting test outputs and refactored the logic to use a canonical normalization function (`normalize_reference()`) that strips all non-alphanumeric characters and converts strings to lowercase prior to dictionary grouping.
+## 🚀 Live Demo
 
-### Question 2: Which part of the codebase are you least confident about and why?
-**Answer:** Handling edge cases in multi-field value comparison when both records contain non-standard sentinel values (e.g. comparing System A status `"cancelled"` vs System B status `""`). While `safe_parse_decimal()` handles numeric fields like amounts cleanly, non-numeric status/date fields rely on basic string matching. In production datasets, status taxonomies across disparate systems would require explicit mapping tables.
+### Frontend
 
-### Question 3: What would you fix or build first if given a second day?
-**Answer:** I would implement:
-1. **Asynchronous Batch Import:** Replace synchronous management command processing with Celery/Redis tasks for large multi-million row file uploads.
-2. **CSV Export & Audit Report Generator:** Add a button in the UI allowing tenant administrators to download filtered discrepancy reports as CSV or PDF.
-3. **Historical Reconciliation Runs:** Track audit run timestamps to show discrepancy trends over time.
+🔗 https://reconciliation-engine-2ydy.vercel.app/
+
+### Backend API
+
+🔗 https://reconciliation-engine-1-xcj.onrender.com
+
+## 🛠️ Technologies Used
+
+* Python
+* Django
+* Django REST Framework
+* REST APIs
+* JavaScript
+* HTML5
+* CSS3
+* Database
+* Vercel
+* Render
+
+## ✨ Features
+
+* Discrepancy management
+* Organization management
+* Reconciliation statistics
+* REST API integration
+* Backend data processing
+* Frontend and backend integration
+* API-based data communication
+
+## 🔗 API Endpoints
+
+### Discrepancies
+
+```text
+GET /api/discrepancies/
+```
+
+### Organizations
+
+```text
+GET /api/organizations/
+```
+
+### Statistics
+
+```text
+GET /api/stats/
+```
+
+## 🌐 Deployment
+
+### Frontend
+
+**Vercel:**
+https://reconciliation-engine-2ydy.vercel.app/
+
+### Backend
+
+**Render:**
+https://reconciliation-engine-1-xcj.onrender.com
+
+## 👩‍💻 Author
+
+**Vasudha H K**
+
+GitHub: https://github.com/Vasudha123HK
+
