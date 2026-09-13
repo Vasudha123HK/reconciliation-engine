@@ -3,11 +3,7 @@
 A full-stack data reconciliation and discrepancy auditing system built with **Django REST Framework (Python)**, **React (Vite)**, and **SQLite**.
 
 ---
-# AdosX Reconciliation Engine
 
-## 🚀 Live Demo
-
-[Open Live Application](https://reconciliation-engine-2ydy.vercel.app)
 
 ## 1. Features & Capabilities
 
